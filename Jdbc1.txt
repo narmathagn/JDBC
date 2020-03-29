@@ -1,0 +1,17 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Hello {
+    public static void execute(Connection conn){
+try{
+PreparedStatement s=conn.prepareStatement("select name,author from book where publishedyear!=2009 order by name asc");
+ResultSet n=s.executeQuery();
+while(n.next()){
+    System.out.println(n.getString(1)+" "+n.getString(2));
+}
+}
+catch (Exception e){
+    
+}

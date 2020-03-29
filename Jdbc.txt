@@ -1,0 +1,22 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Jdbc {
+    public static void execute(Connection conn){
+
+      String k="select * from mobile order by brandname asc";
+      try{
+       PreparedStatement s=conn.prepareStatement(k);
+       ResultSet r=s.executeQuery();
+       while(r.next()){
+           System.out.println(r.getInt("id")+" "+r.getString("brandname")+" "+r.getString("modelname")+" "+r.getInt("price"));
+       }
+      }
+      catch(SQLException e){
+          
+      }
+       
+    }
+}
